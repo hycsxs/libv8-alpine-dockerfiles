@@ -96,15 +96,15 @@ RUN set -eux; \
     python${PY_VER} \
     samurai \
     $(if_yes ${USE_CLANG} \
-      clang=~12 \
-      llvm12=~12 \
+      clang \
+      llvm12 \
     ) \
     $(if_no  ${USE_CLANG}     gcc) \
-    $(if_yes ${USE_LLD}       lld=~12) \
-    $(if_yes ${USE_GN_SOURCE} clang=~12) \
+    $(if_yes ${USE_LLD}       lld) \
+    $(if_yes ${USE_GN_SOURCE} clang) \
     $(if_no  ${USE_GN_SOURCE} gn) \
     $(if_yes ${USE_EXECINFO}  libexecinfo-dev) \
-    $(if_yes ${V8_INTL}       icu-dev=~69) \
+    $(if_yes ${V8_INTL}       icu-dev) \
     ; \
   : "-- V8: download source"; \
   load_archive "${SOURCE_REPO}/v8/v8/+archive/${V8_VERSION}.tar.gz" ${V8_SOURCE}; \
